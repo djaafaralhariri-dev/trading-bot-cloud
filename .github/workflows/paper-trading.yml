@@ -1,0 +1,67 @@
+name: Paper-Trading Cloud
+
+"on":
+  workflow_dispatch:
+  schedule:
+    - cron: '7,22,37,52 9-15 * * 1-5'
+      timezone: 'America/New_York'
+    - cron: '7 16 * * 1-5'
+      timezone: 'America/New_York'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: trading-bot-paper
+  cancel-in-progress: true
+
+jobs:
+  paper:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      BROKER_MODE: alpaca
+      ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+      ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+      ALPACA_PAPER: 'true'
+      ALPACA_ORDER_EXECUTION: ${{ vars.ALPACA_ORDER_EXECUTION || 'false' }}
+      ALPACA_ALLOW_SHORTS: 'false'
+      ALPACA_DATA_FEED: iex
+      ALPACA_REQUIRE_FRACTIONABLE: 'false'
+      MAX_OPEN_POSITIONS: ${{ vars.MAX_OPEN_POSITIONS || '2' }}
+      ALPACA_MAX_ORDER_NOTIONAL: ${{ vars.ALPACA_MAX_ORDER_NOTIONAL || '75' }}
+      RISK_PER_TRADE: ${{ vars.RISK_PER_TRADE || '0.005' }}
+      MAX_POSITION_FRACTION: ${{ vars.MAX_POSITION_FRACTION || '0.35' }}
+
+    steps:
+      - name: Dateien laden
+        uses: actions/checkout@v6
+
+      - name: Python einrichten
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements-github-trade.txt
+
+      - name: Pakete installieren
+        run: python -m pip install -r requirements-github-trade.txt
+
+      - name: Alpaca Paper analysieren und handeln
+        run: python -m app.github_cloud
+
+      - name: GitHub Pages vorbereiten
+        uses: actions/configure-pages@v5
+
+      - name: Dashboard hochladen
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+
+      - name: Dashboard veröffentlichen
+        id: deployment
+        uses: actions/deploy-pages@v4
