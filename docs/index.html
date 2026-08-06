@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="refresh" content="300">
+<title>Trading-Bot Paper Dashboard</title>
+<style>
+:root { color-scheme: dark; --bg:#0c0f14; --panel:#151922; --line:#2a3040; --text:#f1f4f8; --muted:#9aa4b2; --accent:#f6c945; --good:#63d69d; --bad:#ff7b7b; }
+* { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--text); font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif; }
+main { max-width:1180px; margin:auto; padding:24px; } h1 { font-size:34px; margin:0 0 4px; } h2 { margin-top:28px; } .muted { color:var(--muted); }
+.banner { border:1px solid #695d1c; background:#2d2910; padding:12px 14px; border-radius:10px; margin:18px 0; }
+.grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; } .card { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:16px; }
+.label { color:var(--muted); font-size:12px; text-transform:uppercase; letter-spacing:.06em; } .value { font-size:25px; margin-top:4px; overflow-wrap:anywhere; }
+.table-wrap { overflow:auto; border:1px solid var(--line); border-radius:12px; } table { width:100%; border-collapse:collapse; min-width:760px; } th,td { padding:10px 12px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; } th { background:#1a1f2a; position:sticky; top:0; }
+.alert { padding:12px 14px; border-radius:10px; margin:12px 0; } .error { background:#351719; border:1px solid #7b3036; } .success { background:#123024; border:1px solid #296b4b; }
+footer { color:var(--muted); margin:28px 0 10px; font-size:13px; }
+@media (max-width:800px) { main { padding:14px; } .grid { grid-template-columns:repeat(2,minmax(0,1fr)); } h1 { font-size:28px; } .value { font-size:20px; } }
+</style>
+</head>
+<body><main>
+<h1>Trading-Bot</h1>
+<div class="muted">GitHub Cloud · Alpaca Paper · kein Echtgeld</div>
+<div class="banner">Der Bot läuft nicht dauerhaft als WebSocket. GitHub startet ihn planmäßig, analysiert Alpaca-Minutenkurse und legt Stop-Loss sowie Take-Profit als Bracket-Order direkt bei Alpaca ab.</div>
+
+<div class="grid">
+<div class="card"><div class="label">Paper-Equity</div><div class="value">100,000.00 USD</div></div>
+<div class="card"><div class="label">Freies Cash</div><div class="value">100,000.00 USD</div></div>
+<div class="card"><div class="label">US-Markt</div><div class="value">Offen</div></div>
+<div class="card"><div class="label">Paper-Orders</div><div class="value">GESPERRT</div></div>
+<div class="card"><div class="label">Scanner-Kandidaten</div><div class="value">40</div></div>
+<div class="card"><div class="label">Bei Alpaca handelbar</div><div class="value">39</div></div>
+<div class="card"><div class="label">Analysiert</div><div class="value">39</div></div>
+<div class="card"><div class="label">Kursquelle</div><div class="value">Alpaca IEX REST</div></div>
+</div>
+<h2>Offene Paper-Positionen</h2><div class="table-wrap"><table><thead><tr><th>Markt</th><th>Richtung</th><th>Menge</th><th>Marktwert</th><th>Unrealisiert</th></tr></thead><tbody><tr><td colspan="5" class="muted">Keine offenen Paper-Positionen.</td></tr></tbody></table></div>
+<h2>Letzte Paper-Orders</h2><div class="table-wrap"><table><thead><tr><th>Markt</th><th>Seite</th><th>Klasse</th><th>Status</th><th>Zeit</th></tr></thead><tbody><tr><td colspan="5" class="muted">Noch keine Paper-Orders.</td></tr></tbody></table></div>
+<h2>Letzte Analyse</h2><div class="table-wrap"><table><thead><tr><th>Markt</th><th>Preis</th><th>Signal</th><th>Vertrauen</th><th>Strategie</th><th>Begründung</th></tr></thead><tbody><tr><td>CHYM</td><td>32.2800</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>PAYC</td><td>215.9300</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Nur 1 Strategien stimmen überein.</td></tr><tr><td>MGNI</td><td>25.0500</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>APP</td><td>337.5200</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Nur 1 Strategien stimmen überein.</td></tr><tr><td>U</td><td>40.3600</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>IOVA</td><td>5.9400</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>WPP</td><td>26.4400</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>WDC</td><td>468.8450</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>RDW</td><td>12.1100</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>TIGO</td><td>105.7800</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>OSCR</td><td>27.0700</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>FOUR</td><td>43.7950</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>MIRM</td><td>95.8500</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>SOUN</td><td>7.2400</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>PYPL</td><td>58.9250</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>CELH</td><td>24.0400</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Nur 1 Strategien stimmen überein.</td></tr><tr><td>ELF</td><td>95.4000</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>TSLA</td><td>322.8300</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Nur 1 Strategien stimmen überein.</td></tr><tr><td>VISN</td><td>10.5150</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>BROS</td><td>55.0200</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>PRAX</td><td>369.8500</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>FA</td><td>22.6550</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>CAI</td><td>19.3700</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Nur 1 Strategien stimmen überein.</td></tr><tr><td>MSFT</td><td>497.2950</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr><tr><td>INSM</td><td>130.4800</td><td>hold</td><td>0.0%</td><td>ensemble</td><td>Keine Strategie erfüllt die Schwelle.</td></tr></tbody></table></div>
+<footer>Letzte Aktualisierung: 2026-08-06T15:08:55.300334+00:00. Die GitHub-Zeitplanung kann sich verspäten. Der Alpaca-Paper-Endpunkt ist im Code fest verdrahtet.</footer>
+</main></body></html>
