@@ -1,0 +1,9 @@
+{
+  "generated_at": "starter",
+  "symbols": [
+    "SPY", "QQQ", "IWM", "XLF", "XLE", "XLK", "AAPL", "AMD", "F",
+    "SOFI", "PLTR", "INTC", "BAC", "PFE", "NIO", "SNAP", "RIVN"
+  ],
+  "selected_symbols": [],
+  "open_position_symbols": []
+}
